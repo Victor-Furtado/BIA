@@ -13,12 +13,18 @@ import MutipleModalSelection from '../components/MultipleModalSelection'
 import QtdSelector from '../components/QtdSelector'
 
 
-export default function EntryScreen() {
+export default function EntryScreen({ navigation, route }) {
 
     const [more, setMore] = useState(false)
     const [drugs, setDrugs] = useState([])
+    const [comments, setComments] = useState('')
 
-    const page = 1;
+    const page = route.params?.page || 0;
+
+    const proceed = _ => {
+        if (page < 3) navigation.push('NewEntry', { page: page + 1 })
+        //else
+    }
 
     const showMore = show => {
         if (show) {
@@ -27,13 +33,15 @@ export default function EntryScreen() {
                     <KeyboardAvoidingView>
                         <Text style={{ fontSize: 16 }}>Algum comentário? (Opcional)</Text>
                         <TextInput
+                            value={comments}
+                            onChange={text => setComments(text.nativeEvent.text)}
                             style={{ borderWidth: 1, borderColor: '#ccc', paddingHorizontal: 16, paddingVertical: 12, borderRadius: 14 }}
                             placeholder='Insira um comentário aqui' />
                     </KeyboardAvoidingView>
                     <Text style={{ fontSize: 16, marginTop: 24 }}>Onde você está? (Opcional)</Text>
-                    <RadioBtnGroup data={wheres} />
+                    <RadioBtnGroup data={wheres} onChange={console.log} />
                     <Text style={{ fontSize: 16, marginTop: 24 }}>Com quem você está? (Opcional)</Text>
-                    <RadioBtnGroup data={whos} />
+                    <RadioBtnGroup data={whos} onChange={console.log} />
                 </View>
             )
         } else {
@@ -100,8 +108,8 @@ export default function EntryScreen() {
                 {showMore(more)}
             </ScrollView>
             <View style={{ marginBottom: 10, flexDirection: 'row', justifyContent: 'space-around' }}>
-                <FlatBtn clear label='Continuar Depois' />
-                <FlatBtn label='Prosseguir' icon='&#x279C;' />
+                <FlatBtn clear label='Continuar Depois' onPress={_ => navigation.popToTop()} />
+                <FlatBtn label='Prosseguir' icon='&#x279C;' onPress={proceed} />
             </View>
         </>
     )

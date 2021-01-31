@@ -3,10 +3,10 @@ import { View } from 'react-native'
 import Calendar from '../components/Calendar'
 import FlatBtn from '../components/FlatBtn'
 
-export default () => {
+export default ({ navigation }) => {
     return (
         <View style={{ margin: 20 }}>
-            <FlatBtn label='Nova Entrada no Diário' icon='+' />
+            <FlatBtn label='Nova Entrada no Diário' icon='+' onPress={_ => navigation.navigate('NewEntry')} />
             <Calendar />
             <FlatBtn clear label='Ver estatísticas' icon='&#x1F4CA;' />
         </View>
