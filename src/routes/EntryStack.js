@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import IconBtn from '../components/IconBtn';
-import MainScreen from '../pages/MainScreen';
+import MainScreen from './MainTabs';
 import EntryScreen from '../pages/EntryScreen';
 
 const Stack = createStackNavigator()
