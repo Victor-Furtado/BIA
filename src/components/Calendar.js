@@ -65,20 +65,28 @@ export default class Calendar extends Component {
         const rows = matrix.map((row, rowIndex) => {
             const rowItems = row.map((item, colIndex) => {
                 return (
-                    <Text
+                    <TouchableOpacity onPress={_ => this.props.onPress(new Date(`${this.state.activeDate.getMonth() + 1}/${item}/${this.state.activeDate.getFullYear()}`))}
                         key={colIndex}
-                        style={{
-                            flex: 1,
-                            height: 20,
-                            textAlign: 'center',
-                            // Cabeçário
-                            backgroundColor: rowIndex == 0 ? '#ddd' : null,
-                            // Dia atual
-                            fontWeight: item == this.state.activeDate.getDate() ? 'bold' : null
-                        }}
+                        style={[{
+                            height: 28,
+                            width: 28,
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        },
+                        // Cabeçário
+                        rowIndex == 0 ? { height: 20, flex: 1, backgroundColor: '#ccc' } : {},
+                        //DIA ATUAL
+                        this.state.activeDate.getDate() == item
+                            && this.state.activeDate.getMonth() == new Date().getMonth() ? {
+                                borderWidth: 1,
+                                borderRadius: 25,
+                                borderColor: '#C4E'
+                            } : {}]}
                     >
-                        {item != -1 ? item : ''}
-                    </Text>
+                        <Text>
+                            {item != -1 ? item : ''}
+                        </Text>
+                    </TouchableOpacity>
                 )
             })
             return (
@@ -102,10 +110,10 @@ export default class Calendar extends Component {
 
     render() {
         return (
-            <View style={{margin: 20}}>
+            <View style={{ margin: 20 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                    <TouchableOpacity onPress={_=>this.changeMonth(-1)}>
-                        <Text style={{fontSize:30}}>&#x276E;</Text>
+                    <TouchableOpacity onPress={_ => this.changeMonth(-1)}>
+                        <Text style={{ fontSize: 30 }}>&#x276E;</Text>
                     </TouchableOpacity>
                     <Text
                         style={{
@@ -117,8 +125,8 @@ export default class Calendar extends Component {
                         {months[this.state.activeDate.getMonth()]} &nbsp;
                     {this.state.activeDate.getFullYear()}
                     </Text>
-                    <TouchableOpacity onPress={_=>this.changeMonth(+1)}>
-                        <Text style={{fontSize:30}}>&#x276F;</Text>
+                    <TouchableOpacity onPress={_ => this.changeMonth(+1)}>
+                        <Text style={{ fontSize: 30 }}>&#x276F;</Text>
                     </TouchableOpacity>
                 </View>
                 {this.calendar()}

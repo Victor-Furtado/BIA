@@ -10,7 +10,7 @@ const Stack = createStackNavigator()
 export default props => (
     <Stack.Navigator initialRouteName="MainScreen"
         screenOptions={{
-            headerRight: _ => <IconBtn icon='❔' />,
+            headerRight: _ => <IconBtn icon='question-circle' />,
             headerStyle: {
                 backgroundColor: '#ddd',
             },
@@ -26,8 +26,7 @@ export default props => (
         <Stack.Screen
             name="MainScreen"
             options={{
-                headerLeft: _ => <IconBtn clear icon='❖' />,
-                title: 'DIÁRIO',
+                headerShown: false,
             }}
             component={MainScreen}
         />

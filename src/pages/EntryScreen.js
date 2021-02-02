@@ -68,14 +68,14 @@ export default function EntryScreen({ navigation, route }) {
                 <View style={{ marginHorizontal: 20 }}>
                     <Text style={{ marginTop: 28, fontSize: 16 }}>O que você está usando?</Text>
                     <View style={{ flexDirection: 'row' }}>
-                        <MutipleModalSelection onPress={setDrugs} arr={substances} title='O que você está usando?' label='Selecione as substâncias' icon='&#x1F48A;' />
+                        <MutipleModalSelection onPress={setDrugs} arr={substances} title='O que você está usando?' label='Selecione as substâncias' icon='capsules' />
                         <FlatList
                             data={drugs}
                             horizontal
                             keyExtractor={item => item.id}
                             renderItem={({ item }) => (
                                 <View style={{ marginHorizontal: 5 }}>
-                                    <FlatBtn square label={item.text} icon='&#x1F48A;' />
+                                    <FlatBtn square label={item.text} icon='capsules' />
                                     <QtdSelector label='Selecione uma quantidade' item={item} />
                                 </View>
                             )}
@@ -92,16 +92,16 @@ export default function EntryScreen({ navigation, route }) {
             <EntryHead value={page} />
             <ScrollView>
                 {showPage(page)}
-                <View>
+                <View style={{ marginHorizontal: 20 }}>
                     <Text style={{ marginTop: 28, fontSize: 16 }}>Como você está/estava se sentindo?</Text>
                     <View style={{ flexDirection: 'row', marginBottom: 20 }}>
                         <View style={{ marginHorizontal: 20 }}>
                             <Text>Fisicamente</Text>
-                            <SingleModalSelection label='Selecione um estado' icon='&#x1F636;' title='Como você se sente Fisicamente?' arr={feeling} />
+                            <SingleModalSelection label='Selecione um estado' icon='meh-blank' title='Como você se sente Fisicamente?' arr={feeling} />
                         </View>
                         <View style={{ marginHorizontal: 80 }}>
                             <Text>Emocionalmente</Text>
-                            <SingleModalSelection square label='Selecione um estado' icon='&#x1F636;' title='Como você se sente Emocionalmente?' arr={feeling} />
+                            <SingleModalSelection square label='Selecione um estado' icon='meh-blank' title='Como você se sente Emocionalmente?' arr={feeling} />
                         </View>
                     </View>
                 </View>
@@ -109,7 +109,7 @@ export default function EntryScreen({ navigation, route }) {
             </ScrollView>
             <View style={{ marginBottom: 10, flexDirection: 'row', justifyContent: 'space-around' }}>
                 <FlatBtn clear label='Continuar Depois' onPress={_ => navigation.popToTop()} />
-                <FlatBtn label='Prosseguir' icon='&#x279C;' onPress={proceed} />
+                <FlatBtn label='Prosseguir' icon='arrow-right' onPress={proceed} />
             </View>
         </>
     )

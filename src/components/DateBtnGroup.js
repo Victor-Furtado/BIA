@@ -25,13 +25,13 @@ export default function DateBtnGroup({ dt = new Date }) {
             <FlatBtn
                 clear
                 label={`${('0' + date.getDate()).slice(-2)}/${('0' + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}`}
-                icon='&#x1F4C6;'
+                icon='calendar-day'
                 onPress={() => showMode('date')}
             />
             <FlatBtn
                 clear
                 label={`${('0' + date.getHours()).slice(-2)}:${('0' + (date.getMinutes() + 1)).slice(-2)}`}
-                icon='&#x231A;'
+                icon='clock'
                 onPress={() => showMode('time')}
             />
             { show && (

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default function FlatBtn({ label, icon, onPress, style, clear, square }) {
     return (
@@ -14,11 +15,12 @@ export default function FlatBtn({ label, icon, onPress, style, clear, square }) 
                 alignItems: 'center',
                 backgroundColor: clear ? null : '#ccc',
                 borderRadius: 25,
-            },style]}
+            }, style]}
             onPress={onPress}
         >
             <Text style={{ marginHorizontal: 5, fontSize: square ? 12 : 18, color: clear ? '#C4E' : 'black', textDecorationLine: clear ? 'underline' : null }}>{label}</Text>
-            <Text style={{ marginHorizontal: 5, fontSize: square ? 40 : 18, color: clear ? '#C4E' : 'black' }}>{icon}</Text>
+            {/* <Text style={{ marginHorizontal: 5, fontSize: square ? 40 : 18, color: clear ? '#C4E' : 'black' }}>{icon}</Text> */}
+            <Icon style={{ marginHorizontal: 5 }} name={icon} size={square ? 40 : 18} color={clear ? '#C4E' : 'black'} />
         </TouchableOpacity>
     )
 }
