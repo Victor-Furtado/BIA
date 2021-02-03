@@ -10,7 +10,7 @@ export default ({ navigation }) => {
             <Header />
             <View style={{ flex: 1, margin: 20, justifyContent: 'space-evenly' }}>
                 <FlatBtn label='Nova Entrada no Diário' icon='calendar-plus' onPress={_ => navigation.navigate('NewEntry')} />
-                <Calendar onPress={console.log} />
+                <Calendar onPress={date => navigation.navigate('NewEntry', { date: date })} />
                 <FlatBtn clear label='Ver estatísticas' icon='chart-pie' />
             </View>
         </>

@@ -64,8 +64,9 @@ export default class Calendar extends Component {
         const matrix = this.generateMatrix();
         const rows = matrix.map((row, rowIndex) => {
             const rowItems = row.map((item, colIndex) => {
+                const date = new Date(`${this.state.activeDate.getMonth() + 1}/${item}/${this.state.activeDate.getFullYear()}`)
                 return (
-                    <TouchableOpacity onPress={_ => this.props.onPress(new Date(`${this.state.activeDate.getMonth() + 1}/${item}/${this.state.activeDate.getFullYear()}`))}
+                    <TouchableOpacity onPress={_ => this.props.onPress(date)}
                         key={colIndex}
                         style={[{
                             height: 28,
@@ -83,7 +84,9 @@ export default class Calendar extends Component {
                                 borderColor: '#C4E'
                             } : {}]}
                     >
-                        <Text>
+                        <Text style={{
+                            color: date > new Date() ? '#ccc' : '#000'
+                        }}>
                             {item != -1 ? item : ''}
                         </Text>
                     </TouchableOpacity>

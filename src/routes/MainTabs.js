@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import MainScreen from '../pages/MainScreen';
 
@@ -21,7 +22,12 @@ export default function App() {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
-                tabBarIcon: ({ color, size }) => <View style={{ width: size, height: size, borderRadius: 25, backgroundColor: color }} />,
+                tabBarIcon: ({ color, size }) => {
+                    if (route.name === 'Nova Entrada')
+                        return <Icon name='plus-circle' color={color} size={size * 2} style={{ bottom: 16, backgroundColor: 'white', borderRadius: 25 }} />
+                    else
+                        return <View style={{ width: size, height: size, borderRadius: 25, backgroundColor: color }} />
+                },
             })}
             tabBarOptions={{
                 activeTintColor: '#C4E',
@@ -30,6 +36,7 @@ export default function App() {
         >
             <Tab.Screen name="Diário" component={MainScreen} />
             <Tab.Screen name="Dicas" component={SIMSCREEN} />
+            <Tab.Screen name="Nova Entrada" component={SIMSCREEN} />
             <Tab.Screen name="Mistura" component={SIMSCREEN} />
             <Tab.Screen name="SOS" component={SIMSCREEN} />
         </Tab.Navigator>

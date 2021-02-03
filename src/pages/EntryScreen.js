@@ -20,10 +20,11 @@ export default function EntryScreen({ navigation, route }) {
     const [comments, setComments] = useState('')
 
     const page = route.params?.page || 0;
+    const date = route.params?.date || new Date;
 
     const proceed = _ => {
-        if (page < 3) navigation.push('NewEntry', { page: page + 1 })
-        //else
+        if (page < 2) navigation.push('NewEntry', { page: page + 1 })
+        else navigation.popToTop()
     }
 
     const showMore = show => {
@@ -59,7 +60,7 @@ export default function EntryScreen({ navigation, route }) {
                 <View style={{ marginHorizontal: 20 }}>
                     <Text style={{ marginTop: 28, fontSize: 16 }}>Data e Horário de {page == 0 ? 'inicio' : 'termino'}</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                        <DateBtnGroup />
+                        <DateBtnGroup dt={date} />
                     </View>
                 </View>
             )

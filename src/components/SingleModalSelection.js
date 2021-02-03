@@ -7,8 +7,10 @@ import FlatBtn from './FlatBtn'
 export default function SingleModalSelection(props) {
     const [modal, setModal] = useState('false')
     const [icon, setIcon] = useState(props.icon)
+    const [label, setLabel] = useState(props.label)
     const onSelect = (item) => {
         setIcon(item.icon)
+        setLabel(item.text)
         close();
         console.log(item)
     }
@@ -17,7 +19,7 @@ export default function SingleModalSelection(props) {
 
     return (
         <>
-            <FlatBtn square onPress={_ => setModal(true)} label={props.label} icon={icon} />
+            <FlatBtn square onPress={_ => setModal(true)} label={label} icon={icon} />
             <Modal
                 animationType="fade"
                 transparent={true}
