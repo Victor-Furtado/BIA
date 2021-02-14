@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import Calendar from '../components/Calendar'
 import FlatBtn from '../components/FlatBtn'
 import Header from '../components/Header'
 
-export default ({ navigation }) => {
+export default ({ navigation, skip }) => {
+
+    useEffect(() => {
+        if (skip) navigation.navigate('NewEntry');
+    })
+
     return (
         <>
             <Header />

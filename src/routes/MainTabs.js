@@ -8,6 +8,7 @@ const Tab = createBottomTabNavigator();
 
 // DELETE LATER
 import { Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 function SIMSCREEN() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -15,8 +16,6 @@ function SIMSCREEN() {
         </View>
     );
 }
-
-
 
 export default function App() {
     return (
@@ -36,7 +35,9 @@ export default function App() {
         >
             <Tab.Screen name="Diário" component={MainScreen} />
             <Tab.Screen name="Dicas" component={SIMSCREEN} />
-            <Tab.Screen name="Nova Entrada" component={SIMSCREEN} />
+            <Tab.Screen name="Nova Entrada">
+                {_ => <MainScreen />}
+            </Tab.Screen>
             <Tab.Screen name="Mistura" component={SIMSCREEN} />
             <Tab.Screen name="SOS" component={SIMSCREEN} />
         </Tab.Navigator>
