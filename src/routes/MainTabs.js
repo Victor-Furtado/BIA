@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import MainScreen from '../pages/MainScreen';
+import SOS from '../pages/SOS';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,12 +35,12 @@ export default function App() {
             }}
         >
             <Tab.Screen name="Diário" component={MainScreen} />
-            <Tab.Screen name="Dicas" component={SIMSCREEN} />
-            <Tab.Screen name="Nova Entrada">
+            <Tab.Screen name="Cuidados" component={SIMSCREEN} />
+            <Tab.Screen name="Registro">
                 {_ => <MainScreen />}
             </Tab.Screen>
             <Tab.Screen name="Mistura" component={SIMSCREEN} />
-            <Tab.Screen name="SOS" component={SIMSCREEN} />
+            <Tab.Screen name="SOS" component={SOS} />
         </Tab.Navigator>
     );
 }

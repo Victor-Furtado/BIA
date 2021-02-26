@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import IconBtn from '../components/IconBtn';
 import MainScreen from './MainTabs';
 import EntryScreen from '../pages/EntryScreen';
+import SOS from '../pages/SOS';
 
 const Stack = createStackNavigator()
 
@@ -36,6 +37,13 @@ export default props => (
                 title: 'Nova Entrada',
             }}
             component={EntryScreen}
+        />
+        <Stack.Screen
+            name="SOS"
+            options={{
+                title: 'SOS',
+            }}
+            component={SOS}
         />
     </Stack.Navigator>
 )

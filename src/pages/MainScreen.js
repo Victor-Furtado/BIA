@@ -12,7 +12,7 @@ export default ({ navigation, skip }) => {
 
     return (
         <>
-            <Header />
+            <Header text='Diário' />
             <View style={{ flex: 1, margin: 20, justifyContent: 'space-evenly' }}>
                 <FlatBtn label='Nova Entrada no Diário' icon='calendar-plus' onPress={_ => navigation.navigate('NewEntry')} />
                 <Calendar onPress={date => navigation.navigate('NewEntry', { date: date })} />
